@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ClientesApiApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(ClientesApiApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(ClientesApiApplication.class, args);
 
-    System.out.println("Hello, NVim!");
-  }
+        System.out.println("\n Welcome to the rice fields, motherfucker!\n");
+    }
 }
