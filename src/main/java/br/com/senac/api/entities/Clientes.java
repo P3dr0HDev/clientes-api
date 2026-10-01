@@ -1,8 +1,11 @@
 package br.com.senac.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Clientes {
@@ -23,16 +26,12 @@ public class Clientes {
     @Column
     private LocalDate dataNascimento;
 
+    @OneToMany(mappedBy = "cliente")
+    @JsonManagedReference
+    private List<Enderecos> enderecos;
+
     public Clientes() {
 
-    }
-
-    public Clientes(Long id, String nome, String email, String documento, LocalDate dataNascimento) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.documento = documento;
-        this.dataNascimento = dataNascimento;
     }
 
     public Long getId() {
@@ -73,5 +72,13 @@ public class Clientes {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public List<Enderecos> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Enderecos> enderecos) {
+        this.enderecos = enderecos;
     }
 }
