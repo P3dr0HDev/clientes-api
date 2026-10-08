@@ -1,7 +1,9 @@
 package br.com.senac.api.controllers;
 
+import br.com.senac.api.dtos.ClienteEnderecoRequestDto;
 import br.com.senac.api.dtos.ClientesRequestDto;
 import br.com.senac.api.entidades.Clientes;
+import br.com.senac.api.services.ClientesEnderecosService;
 import br.com.senac.api.services.ClientesService;
 import br.com.senac.api.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class ClientesController {
     @Autowired
     private ClientesService clientesService;
 
+    @Autowired
+    private ClientesEnderecosService clientesEnderecosService;
+
     @GetMapping("/listar")
     public ResponseEntity<List<Clientes>> listarTodos() {
         return ResponseEntity.ok(clientesService.listar());
@@ -28,7 +33,7 @@ public class ClientesController {
         try {
             return ResponseEntity
                     .status(201)
-                    .body(clientesService.criar(cliente));
+                    .body(clientesEnderecosService.criarClienteEnderecos(cliente));
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()

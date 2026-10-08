@@ -14,22 +14,26 @@ public class EnderecosService {
 
     @Autowired
     private EnderecosRepositorio enderecosRepositorio;
+
     @Autowired
     private ClientesService clientesService;
-
 
     public Enderecos criar(EnderecosRequestDto endereco) {
         Clientes cliente = clientesService.listarPorId(endereco.getClienteId());
 
         Enderecos enderecoPersist = this.enderecosRequestDtoToEnderecos(endereco);
+        enderecoPersist.setCliente(cliente);
 
         return enderecosRepositorio.save(enderecoPersist);
     }
 
     public  Enderecos atualizar(Long id, EnderecosRequestDto endereco) {
         if(enderecosRepositorio.existsById(id)) {
+            Clientes cliente = clientesService.listarPorId(endereco.getClienteId());
+
             Enderecos enderecoPersist = this.enderecosRequestDtoToEnderecos(endereco);
             enderecoPersist.setId(id);
+            enderecoPersist.setCliente(cliente);
 
             return enderecosRepositorio.save(enderecoPersist);
         }
@@ -62,4 +66,3 @@ public class EnderecosService {
         return saida;
     }
 }
-//git FIlHA DA PUTA

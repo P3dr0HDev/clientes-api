@@ -4,6 +4,7 @@ import br.com.senac.api.dtos.EnderecosRequestDto;
 import br.com.senac.api.entidades.Enderecos;
 import br.com.senac.api.services.EnderecosService;
 import br.com.senac.api.utils.RequestUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +15,12 @@ import java.util.List;
 @RequestMapping("/enderecos")
 public class EnderecosController {
 
-    private EnderecosService endercosService;
+    @Autowired
+    private EnderecosService enderecosService;
 
     @GetMapping("/listar")
     public ResponseEntity<List<Enderecos>> listarTodos() {
-        return ResponseEntity.ok(endercosService.listarTodos());
+        return ResponseEntity.ok(enderecosService.listarTodos());
     }
 
     @PostMapping("/criar")
@@ -26,7 +28,7 @@ public class EnderecosController {
         try {
             return ResponseEntity
                     .status(201)
-                    .body(endercosService.criar(endereco));
+                    .body(enderecosService.criar(endereco));
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
@@ -44,7 +46,7 @@ public class EnderecosController {
             @RequestBody EnderecosRequestDto endereco
     ) {
         try {
-            return ResponseEntity.ok(endercosService.atualizar(
+            return ResponseEntity.ok(enderecosService.atualizar(
                     id,endereco
             ));
         } catch (RuntimeException e) {
@@ -61,7 +63,7 @@ public class EnderecosController {
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id) {
         try {
-            endercosService.deletar(id);
+            enderecosService.deletar(id);
             return ResponseEntity.ok(null);
         } catch (RuntimeException e) {
             return ResponseEntity

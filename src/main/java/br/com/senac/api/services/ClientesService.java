@@ -45,15 +45,6 @@ public class ClientesService {
         throw new RuntimeException("Cliente não encontrado!");
     }
 
-    public Clientes listarPorId(Long id){
-        Optional<Clientes> clienteRetorno = clientesRepositorio.findById(id);
-        if(clienteRetorno.isPresent()){
-            return clienteRetorno.get();
-        }
-
-        throw new RuntimeException("Cliente não Encontrado");
-    }
-
     private Clientes clientesRequestDtoToClientes(ClientesRequestDto entrada) {
         Clientes saida = new Clientes();
 
@@ -63,5 +54,14 @@ public class ClientesService {
         saida.setDataNascimento(entrada.getDataNascimento());
 
         return saida;
+    }
+
+    public Clientes listarPorId(Long id) {
+        Optional<Clientes> clienteRetorno = clientesRepositorio.findById(id);
+        if (clienteRetorno.isPresent()) {
+            return clienteRetorno.get();
+        }
+
+        throw new RuntimeException("Cliente não encontrado");
     }
 }
