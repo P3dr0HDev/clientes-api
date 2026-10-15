@@ -19,12 +19,6 @@ public class Enderecos {
     @Column(nullable = false, length = 100)
     private String bairro;
 
-    @Column(nullable = false, length = 100)
-    private String cidade;
-
-    @Column(nullable = false, length = 2)
-    private String estado;
-
     @Column
     private String complemento;
 
@@ -32,6 +26,10 @@ public class Enderecos {
     @JoinColumn(name = "cliente_id", nullable = false)
     @JsonBackReference
     private Clientes cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "cidade_id", nullable = false)
+    private Cidades cidade;
 
     public Long getId() {
         return id;
@@ -65,22 +63,6 @@ public class Enderecos {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getComplemento() {
         return complemento;
     }
@@ -95,5 +77,13 @@ public class Enderecos {
 
     public void setCliente(Clientes cliente) {
         this.cliente = cliente;
+    }
+
+    public Cidades getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidades cidade) {
+        this.cidade = cidade;
     }
 }

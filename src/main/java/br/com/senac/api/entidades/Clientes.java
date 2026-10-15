@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class Clientes {
 
     @OneToMany(mappedBy = "cliente")
     @JsonManagedReference
-    private List<Enderecos> enderecos;
+    private List<Enderecos> enderecos = new ArrayList<>();
 
     public Long getId() {
         return id;

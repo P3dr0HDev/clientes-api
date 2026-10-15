@@ -3,7 +3,7 @@ package br.com.senac.api.controllers;
 import br.com.senac.api.dtos.EnderecosRequestDto;
 import br.com.senac.api.entidades.Enderecos;
 import br.com.senac.api.services.EnderecosService;
-import br.com.senac.api.utils.RequestUtil;
+import br.com.senac.api.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -32,11 +32,11 @@ public class EnderecosController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 
@@ -52,11 +52,11 @@ public class EnderecosController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 
@@ -68,11 +68,11 @@ public class EnderecosController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 }

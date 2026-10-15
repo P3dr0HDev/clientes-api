@@ -1,11 +1,10 @@
 package br.com.senac.api.controllers;
 
-import br.com.senac.api.dtos.ClienteEnderecoRequestDto;
 import br.com.senac.api.dtos.ClientesRequestDto;
 import br.com.senac.api.entidades.Clientes;
 import br.com.senac.api.services.ClientesEnderecosService;
 import br.com.senac.api.services.ClientesService;
-import br.com.senac.api.utils.RequestUtil;
+import br.com.senac.api.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,11 +36,11 @@ public class ClientesController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 
@@ -57,11 +56,11 @@ public class ClientesController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 
@@ -73,11 +72,11 @@ public class ClientesController {
         } catch (RuntimeException e) {
             return ResponseEntity
                     .badRequest()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity
                     .internalServerError()
-                    .body(RequestUtil.parserMensagem(e.getMessage()));
+                    .body(ResponseUtil.parserMensagem(e.getMessage()));
         }
     }
 }

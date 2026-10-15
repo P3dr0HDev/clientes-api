@@ -7,13 +7,11 @@ public class EnderecosRequestDto {
 
     private String bairro;
 
-    private String cidade;
-
-    private String estado;
-
     private String complemento;
 
     private Long clienteId;
+
+    private Long cidadeId;
 
     public int getCep() {
         return cep;
@@ -39,22 +37,6 @@ public class EnderecosRequestDto {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getComplemento() {
         return complemento;
     }
@@ -69,5 +51,13 @@ public class EnderecosRequestDto {
 
     public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
+    }
+
+    public Long getCidadeId() {
+        return cidadeId;
+    }
+
+    public void setCidadeId(Long cidadeId) {
+        this.cidadeId = cidadeId;
     }
 }

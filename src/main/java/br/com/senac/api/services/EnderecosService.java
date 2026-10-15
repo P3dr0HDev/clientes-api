@@ -1,6 +1,7 @@
 package br.com.senac.api.services;
 
 import br.com.senac.api.dtos.EnderecosRequestDto;
+import br.com.senac.api.entidades.Cidades;
 import br.com.senac.api.entidades.Clientes;
 import br.com.senac.api.entidades.Enderecos;
 import br.com.senac.api.repositorios.EnderecosRepositorio;
@@ -17,6 +18,9 @@ public class EnderecosService {
 
     @Autowired
     private ClientesService clientesService;
+
+    @Autowired
+    private CidadesService cidadesService;
 
     public Enderecos criar(EnderecosRequestDto endereco) {
         Clientes cliente = clientesService.listarPorId(endereco.getClienteId());
@@ -58,11 +62,12 @@ public class EnderecosService {
         Enderecos saida = new Enderecos();
         saida.setBairro(entrada.getBairro());
         saida.setCep(entrada.getCep());
-        saida.setCidade(entrada.getCidade());
-        saida.setEstado(entrada.getEstado());
         saida.setComplemento(entrada.getComplemento());
         saida.setRua(entrada.getRua());
 
+        Cidades cidadeRetorno= cidadesService.listarPorId(entrada.getCidadeId());
+
+        saida.setCidade(cidadeRetorno);
         return saida;
     }
 }
