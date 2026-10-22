@@ -1,7 +1,6 @@
 package br.com.senac.api.entidades;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 @Entity
 public class Cidades {
